@@ -385,10 +385,7 @@ def top_students():
     ]
     return jsonify(data), 200
 
-# -------------------- UI --------------------
-@app.route('/ui')
-def serve_ui():
-    return render_template('index.html')
+
 
 # -------------------- MAIN --------------------
 if __name__ == '__main__':
