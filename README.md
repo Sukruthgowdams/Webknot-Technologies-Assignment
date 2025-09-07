@@ -1,4 +1,6 @@
 README:
+
+
 This Project is Campus Event Management System , that is built as per the assignment given:
 The system allows students to sign up, log in, browse events, and register for the ones they are interested in. Admins can create, update, or delete events and keep track of how many students have registered.
 So , this project is is build using Python using flask which handles the authentication, event management, and storing all data in SQLite
@@ -18,7 +20,7 @@ pip install -r requirements.txt
 initialize: python app.py
 so this should create SQLite DB
 and run flask server : Flask RUN
-
+POST AND USE BY URSELF!!!!!!
 SO RUN CURL Commands in Cmd with respect to the url:
 Example:
 
@@ -40,6 +42,9 @@ And also I im not attaching the screenshots of outputs, because u can check it o
 but ill we attaching the cmd prompts.
 THANK YOU FOR THIS Opportunity .
 
+PICS:
+
+<img width="1919" height="754" alt="Screenshot 2025-09-07 145356" src="https://github.com/user-attachments/assets/900c93c1-35cf-4753-82bb-3c6c127e1ed9" />
 
 Prototype Code
 •	Include your full project folder:
