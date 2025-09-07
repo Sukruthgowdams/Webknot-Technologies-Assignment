@@ -59,10 +59,12 @@ def iso(dt):
     return dt.isoformat() if dt else None
 
 # -------------------- ROUTES --------------------
-@app.route('/')
-@app.route('/ui')
-def serve_ui():
+# -------------------- ROUTES --------------------
+@app.route('/', defaults={'path': ''})
+@app.route('/ui', defaults={'path': ''})
+def serve_ui(path):
     return render_template('index.html')
+
 
 # ---------- Events ----------
 @app.route('/events', methods=['GET'])
