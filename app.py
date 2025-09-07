@@ -307,27 +307,28 @@ def delete_all_feedbacks():
 
 # -------------------- REPORTS (ORM) --------------------
 
-@app.route('/reports/event-popularity')
-def event_popularity():
-    event_type = request.args.get('type')
+@app.route('/reports/top-students')
+def top_students():
     query = db.session.query(
-        Event.id, Event.title, Event.event_type, Event.start_time, Event.end_time,
-        func.count(Registration.id).label('registrations')
-    ).outerjoin(Registration).group_by(Event.id).order_by(func.count(Registration.id).desc())
-
-    if event_type:
-        query = query.filter(Event.event_type == event_type)
+        Student.id, Student.name,
+        func.count(func.distinct(Registration.event_id)).label('total_events'),
+        func.count(func.distinct(Attendance.event_id)).label('attended_events')
+    ).outerjoin(
+        Registration, Student.id == Registration.student_id
+    ).outerjoin(
+        Attendance, (Attendance.student_id == Student.id) & (Attendance.present == 1)
+    ).group_by(Student.id
+    ).order_by(func.count(func.distinct(Attendance.event_id)).desc()
+    ).limit(3)
 
     data = [
         dict(
-            id=e.id,
-            title=e.title,
-            event_type=e.event_type,
-            start_time=iso(e.start_time),
-            end_time=iso(e.end_time),
-            registrations=e.registrations
+            id=s.id,
+            name=s.name,
+            total_events=s.total_events or 0,
+            attended_events=s.attended_events or 0
         )
-        for e in query.all()
+        for s in query.all()
     ]
     return jsonify(data), 200
 
