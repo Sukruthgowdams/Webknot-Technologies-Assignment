@@ -907,7 +907,7 @@ let currentEventId = null;
 
 async function fetchEvents() {
     try {
-        const res = await fetch('https://webknot-technologies-assignment.onrender.com/ui/reports/event-popularity');
+        const res = await fetch('https://webknot-technologies-assignment.onrender.com/reports/event-popularity');
         const events = await res.json();
         const container = document.getElementById('events');
         container.innerHTML = '';
@@ -983,7 +983,7 @@ async function registerStudent(evt) {
     btn.disabled = true;
 
     try {
-        const res = await fetch(`https://webknot-technologies-assignment.onrender.com/ui/events/${eventId}/register`, {
+        const res = await fetch(`https://webknot-technologies-assignment.onrender.com/events/${eventId}/register`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({name, email})
@@ -1023,7 +1023,7 @@ async function submitAttendance(evt){
     btn.disabled = true;
 
     try {
-        const res = await fetch(`https://webknot-technologies-assignment.onrender.com/ui/events/${currentEventId}/attendance`, {
+        const res = await fetch(`https://webknot-technologies-assignment.onrender.com/events/${currentEventId}/attendance`, {
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({email})
@@ -1096,7 +1096,7 @@ async function submitFeedback(evt) {
     btn.disabled = true;
 
     try {
-        const res = await fetch(`https://webknot-technologies-assignment.onrender.com/ui/events/${currentEventId}/feedback`, {
+        const res = await fetch(`https://webknot-technologies-assignment.onrender.com/events/${currentEventId}/feedback`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email, rating: parseInt(rating), comment})
@@ -1125,22 +1125,22 @@ function showFeedbackResult(data, isSuccess) {
 async function loadReports() {
     try {
         // Load event popularity
-        const popularityRes = await fetch('https://webknot-technologies-assignment.onrender.com/ui/reports/event-popularity');
+        const popularityRes = await fetch('https://webknot-technologies-assignment.onrender.com/reports/event-popularity');
         const popularityData = await popularityRes.json();
         populatePopularityTable(popularityData);
 
         // Load attendance rates
-        const attendanceRes = await fetch('https://webknot-technologies-assignment.onrender.com/ui/reports/attendance-percentage');
+        const attendanceRes = await fetch('https://webknot-technologies-assignment.onrender.com/reports/attendance-percentage');
         const attendanceData = await attendanceRes.json();
         populateAttendanceTable(attendanceData);
 
         // Load feedback ratings
-        const feedbackRes = await fetch('https://webknot-technologies-assignment.onrender.com/ui/reports/average-feedback');
+        const feedbackRes = await fetch('https://webknot-technologies-assignment.onrender.com/reports/average-feedback');
         const feedbackData = await feedbackRes.json();
         populateFeedbackTable(feedbackData);
 
         // Load top students
-        const studentsRes = await fetch('https://webknot-technologies-assignment.onrender.com/ui/reports/top-students');
+        const studentsRes = await fetch('https://webknot-technologies-assignment.onrender.com/reports/top-students');
         const studentsData = await studentsRes.json();
         populateStudentsTable(studentsData);
 
