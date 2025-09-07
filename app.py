@@ -5,7 +5,6 @@ from sqlalchemy import func
 from flask import Flask, render_template
 
 app = Flask(__name__)
-app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///events.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -61,8 +60,9 @@ def iso(dt):
 
 # -------------------- ROUTES --------------------
 @app.route('/')
-def home():
-    return "Campus Event API is running 🚀"
+@app.route('/ui')
+def serve_ui():
+    return render_template('index.html')
 
 # ---------- Events ----------
 @app.route('/events', methods=['GET'])
