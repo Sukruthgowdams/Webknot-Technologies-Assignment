@@ -41,7 +41,7 @@ CURL PUT( UPDATE) : curl -X PUT https://webknot-technologies-assignment.onrender
 
 And so on.. You can use similar CURL commands for GET, PUT, and DELETE requests as per the API endpoints
 DO READ THE DESIGN DOC.
-So my personally,
+So personally,
 I gained hands on experience in building a full stack web application. I understood how Flask can handle authentication, routing, and database operations with API and also Postman
 And also I im not attaching the screenshots of outputs, because u can check it on the link itself
 but ill we attaching the cmd prompts.
